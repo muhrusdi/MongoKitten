@@ -1,0 +1,16 @@
+os:
+  - linux
+  - osx
+language: generic
+sudo: required
+dist: trusty
+osx_image: xcode8
+install:
+  - eval "$(curl -sL swift.qutheory.io/travis)"
+script:
+  - bash <(curl -s https://raw.githubusercontent.com/PlanTeam/Tools/master/CI.sh)
+  # Build Core
+  - swift build
+  - swift build --configuration release
+  # Test Core
+  - swift test
